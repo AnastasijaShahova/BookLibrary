@@ -10,6 +10,8 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
+    private var viewModel: AuthViewModel?
+    
     let welcomeLabel = UILabel(text: "Register your user!", font: .avenir26())
     let emailLabel = UILabel(text: "Email")
     let passwordLabel = UILabel(text: "Password")
@@ -23,29 +25,32 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        viewModel = AuthViewModel()
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
         setupConstraints()
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        bindData()
     }
     
     @objc private func signUpButtonTapped() {
-        AuthService.shared.register(
-            email: emailTextField.text,
-            password: passwordTextField.text) { (result) in
-                switch result {
-                case .success(_):
-                    UserDefaults.standard.set(true, forKey: "isAuthenticated")
-                    UserDefaults.standard.synchronize()
-                    let libraryViewController = ListOfBooksViewController()
-                    self.navigationController?.pushViewController(libraryViewController, animated: true)
-                    
-                case .failure(let error):
-                    AlertManager.showRegistrationErrorAlert(on: self, with: error)
-                }
+        viewModel?.updateCredentials(username: emailTextField.text!, password: passwordTextField.text!)
+        
+        viewModel?.login(completion: { value in
+            if value == "success" {
+                let libraryViewController = ListOfBooksViewController()
+                self.navigationController?.pushViewController(libraryViewController, animated: true)
             }
+        })
+    }
+    
+    func bindData() {
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            AlertManager.showRegistrationErrorAlert(on: self, with: errorMessage )
+        }
     }
     
 }

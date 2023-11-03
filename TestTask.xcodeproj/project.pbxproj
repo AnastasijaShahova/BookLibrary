@@ -20,7 +20,6 @@
 		5160BE522AF2A0FF00093756 /* OneLineTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE512AF2A0FF00093756 /* OneLineTextField.swift */; };
 		5160BE562AF2BCA800093756 /* ListOfBooksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE552AF2BCA800093756 /* ListOfBooksViewController.swift */; };
 		5160BE582AF2C68900093756 /* BookInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE572AF2C68800093756 /* BookInfoCell.swift */; };
-		5160BE5A2AF2D2CB00093756 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE592AF2D2CB00093756 /* UserModel.swift */; };
 		5160BE5C2AF2D2FA00093756 /* BookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE5B2AF2D2FA00093756 /* BookModel.swift */; };
 		5160BE612AF2E33700093756 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE602AF2E33700093756 /* Validators.swift */; };
 		5160BE632AF2EBF200093756 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE622AF2EBF200093756 /* AuthService.swift */; };
@@ -32,6 +31,10 @@
 		51D7E83F2AF3F3A000E8E3BC /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 51D7E83E2AF3F3A000E8E3BC /* .gitignore */; };
 		51D7E8472AF4E82F00E8E3BC /* AlertExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7E8462AF4E82F00E8E3BC /* AlertExtension.swift */; };
 		51D7E84C2AF4FD8700E8E3BC /* AuthError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7E84B2AF4FD8700E8E3BC /* AuthError.swift */; };
+		51D7E85E2AF5234100E8E3BC /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7E85D2AF5234100E8E3BC /* Dynamic.swift */; };
+		51D7E8612AF5236200E8E3BC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7E8602AF5236200E8E3BC /* LoginViewModel.swift */; };
+		51D7E8632AF5237000E8E3BC /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7E8622AF5237000E8E3BC /* AuthViewModel.swift */; };
+		51D7E8652AF532E400E8E3BC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7E8642AF532E400E8E3BC /* Credentials.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,7 +54,6 @@
 		5160BE512AF2A0FF00093756 /* OneLineTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLineTextField.swift; sourceTree = "<group>"; };
 		5160BE552AF2BCA800093756 /* ListOfBooksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfBooksViewController.swift; sourceTree = "<group>"; };
 		5160BE572AF2C68800093756 /* BookInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoCell.swift; sourceTree = "<group>"; };
-		5160BE592AF2D2CB00093756 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5160BE5B2AF2D2FA00093756 /* BookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookModel.swift; sourceTree = "<group>"; };
 		5160BE602AF2E33700093756 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		5160BE622AF2EBF200093756 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -63,6 +65,10 @@
 		51D7E83E2AF3F3A000E8E3BC /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		51D7E8462AF4E82F00E8E3BC /* AlertExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertExtension.swift; sourceTree = "<group>"; };
 		51D7E84B2AF4FD8700E8E3BC /* AuthError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthError.swift; sourceTree = "<group>"; };
+		51D7E85D2AF5234100E8E3BC /* Dynamic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
+		51D7E8602AF5236200E8E3BC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		51D7E8622AF5237000E8E3BC /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		51D7E8642AF532E400E8E3BC /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		92650C637C759AC6D8C646C7 /* Pods-TestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.debug.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,8 +169,7 @@
 		5160BE682AF39E6700093756 /* Login&Auth */ = {
 			isa = PBXGroup;
 			children = (
-				51D7E8492AF4F53C00E8E3BC /* AuthService */,
-				51D7E8482AF4F52A00E8E3BC /* DataStorage */,
+				51D7E85F2AF5234800E8E3BC /* ViewModel */,
 				5160BE692AF39E7C00093756 /* Model */,
 				5160BE6A2AF39E8100093756 /* View */,
 				51D7E84A2AF4F54B00E8E3BC /* Helpers */,
@@ -175,7 +180,8 @@
 		5160BE692AF39E7C00093756 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5160BE592AF2D2CB00093756 /* UserModel.swift */,
+				51D7E8482AF4F52A00E8E3BC /* DataStorage */,
+				51D7E8642AF532E400E8E3BC /* Credentials.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -223,6 +229,25 @@
 				51D7E84B2AF4FD8700E8E3BC /* AuthError.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		51D7E85C2AF5233100E8E3BC /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				51D7E85D2AF5234100E8E3BC /* Dynamic.swift */,
+			);
+			path = Bindings;
+			sourceTree = "<group>";
+		};
+		51D7E85F2AF5234800E8E3BC /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				51D7E8492AF4F53C00E8E3BC /* AuthService */,
+				51D7E85C2AF5233100E8E3BC /* Bindings */,
+				51D7E8602AF5236200E8E3BC /* LoginViewModel.swift */,
+				51D7E8622AF5237000E8E3BC /* AuthViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		702E89B6C4F8865D06B2B205 /* Frameworks */ = {
@@ -359,15 +384,18 @@
 				5160BE502AF29DFB00093756 /* StackViewWithExtension.swift in Sources */,
 				5160BE582AF2C68900093756 /* BookInfoCell.swift in Sources */,
 				5160BE712AF3B96600093756 /* SignUpViewController.swift in Sources */,
+				51D7E8612AF5236200E8E3BC /* LoginViewModel.swift in Sources */,
 				5160BE522AF2A0FF00093756 /* OneLineTextField.swift in Sources */,
 				5160BE5C2AF2D2FA00093756 /* BookModel.swift in Sources */,
 				5160BE672AF2EF1D00093756 /* KeyChainManager.swift in Sources */,
 				5160BE482AF2528F00093756 /* UIButtonWithExtension.swift in Sources */,
 				5160BE342AF24D7600093756 /* AppDelegate.swift in Sources */,
 				5160BE362AF24D7600093756 /* SceneDelegate.swift in Sources */,
+				51D7E8652AF532E400E8E3BC /* Credentials.swift in Sources */,
 				5160BE562AF2BCA800093756 /* ListOfBooksViewController.swift in Sources */,
 				5160BE612AF2E33700093756 /* Validators.swift in Sources */,
-				5160BE5A2AF2D2CB00093756 /* UserModel.swift in Sources */,
+				51D7E85E2AF5234100E8E3BC /* Dynamic.swift in Sources */,
+				51D7E8632AF5237000E8E3BC /* AuthViewModel.swift in Sources */,
 				5160BE632AF2EBF200093756 /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

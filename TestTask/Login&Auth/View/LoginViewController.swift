@@ -9,6 +9,8 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private var viewModel: LoginViewModel?
+    
     let welcomeBackLabel = UILabel(text: "Welcome!", font: .avenir26())
     let emailLabel = UILabel(text: "Email")
     let passwordLabel = UILabel(text: "Password")
@@ -30,6 +32,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        viewModel = LoginViewModel()
         
         setupConstraints()
         emailTextField.delegate = self
@@ -37,13 +40,13 @@ class LoginViewController: UIViewController {
         
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+        bindData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let isAuthenticated = UserDefaults.standard.bool(forKey: "isAuthenticated")
-        print("ViewWIllAppear \(UserDefaults.standard.bool(forKey: "isAuthenticated"))")
         if isAuthenticated {
             navigationController?.pushViewController(ListOfBooksViewController(), animated: true)
         }
@@ -55,24 +58,22 @@ class LoginViewController: UIViewController {
         passwordTextField.text = nil
     }
     
-    
     @objc private func loginButtonTapped() {
-        AuthService.shared.login(
-            email: emailTextField.text!,
-            password: passwordTextField.text!) { (result) in
-                switch result {
-                case .success(_):
-                    UserDefaults.standard.set(true, forKey: "isAuthenticated")
-                    print("loginButtonTapped \(UserDefaults.standard.bool(forKey: "isAuthenticated"))")
-
-                    UserDefaults.standard.synchronize()
-                    let libraryViewController = ListOfBooksViewController()
-                    self.navigationController?.pushViewController(libraryViewController, animated: true)
-                    
-                case .failure(let error):
-                    AlertManager.showLoginErrorAlert(on: self, with: error)
-                }
+        viewModel?.updateCredentials(username: emailTextField.text!, password: passwordTextField.text!)
+        
+        viewModel?.login(completion: { value in
+            if value == "success" {
+                let libraryViewController = ListOfBooksViewController()
+                self.navigationController?.pushViewController(libraryViewController, animated: true)
             }
+        })
+    }
+    
+    func bindData() {
+        viewModel?.errorMessage.bind {
+            guard let errorMessage = $0 else { return }
+            AlertManager.showLoginErrorAlert(on: self, with: errorMessage )
+        }
     }
     
     @objc private func signUpButtonTapped() {

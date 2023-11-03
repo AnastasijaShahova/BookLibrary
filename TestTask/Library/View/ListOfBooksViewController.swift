@@ -65,7 +65,6 @@ class ListOfBooksViewController: UIViewController {
     
     @objc private func logoutButtonTapped() {
         UserDefaults.standard.set(false, forKey: "isAuthenticated")
-        print("LogOut \(UserDefaults.standard.bool(forKey: "isAuthenticated"))")
         UserDefaults.standard.synchronize()
         navigationController?.popToRootViewController(animated: true)
     }

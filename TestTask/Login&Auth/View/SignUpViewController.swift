@@ -10,7 +10,7 @@ import UIKit
 
 final class SignUpViewController: UIViewController {
     
-    private var viewModel: AuthViewModel?
+    var viewModel: AuthViewModel?
     
     let welcomeLabel = UILabel(text: "Register your user!", font: .avenir26())
     let emailLabel = UILabel(text: "Email")
@@ -24,9 +24,7 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
-        viewModel = AuthViewModel()
-        
+        view.backgroundColor = .white        
         emailTextField.delegate = self
         passwordTextField.delegate = self
         
@@ -38,10 +36,9 @@ final class SignUpViewController: UIViewController {
     @objc private func signUpButtonTapped() {
         viewModel?.updateCredentials(username: emailTextField.text!, password: passwordTextField.text!)
         
-        viewModel?.login(completion: { value in
+        viewModel?.login(completion: { [weak self] (value) in
             if value == "success" {
-                let libraryViewController = ListOfBooksViewController()
-                self.navigationController?.pushViewController(libraryViewController, animated: true)
+                self?.viewModel?.goToMainPage()
             }
         })
     }

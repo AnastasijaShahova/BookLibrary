@@ -11,12 +11,11 @@ import UIKit
 final class ListOfBooksViewController: UIViewController {
 
     var tableView: UITableView!
-    private var viewModel: ListOfBookViewModel?
+    var viewModel: ListOfBookViewModel?
     private var activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ListOfBookViewModel()
         setupTableView()
         setupNavigationBar()
         setupActivityIndicator()
@@ -61,7 +60,7 @@ final class ListOfBooksViewController: UIViewController {
     @objc private func logoutButtonTapped() {
         UserDefaults.standard.set(false, forKey: "isAuthenticated")
         UserDefaults.standard.synchronize()
-        navigationController?.popToRootViewController(animated: true)
+        viewModel?.goToLogin()
     }
 }
 

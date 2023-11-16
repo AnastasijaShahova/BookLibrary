@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		07F6941B7FA9AA992791A415 /* Pods_TestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33849B870A8AC519A8927273 /* Pods_TestTask.framework */; };
+		512F1AF22B068F360094E475 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F1AF12B068F360094E475 /* AppCoordinator.swift */; };
+		512F1AF42B068F450094E475 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F1AF32B068F450094E475 /* Coordinator.swift */; };
 		5160BE342AF24D7600093756 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE332AF24D7600093756 /* AppDelegate.swift */; };
-		5160BE362AF24D7600093756 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE352AF24D7600093756 /* SceneDelegate.swift */; };
 		5160BE382AF24D7600093756 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5160BE372AF24D7600093756 /* LoginViewController.swift */; };
 		5160BE3D2AF24D7800093756 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5160BE3C2AF24D7800093756 /* Assets.xcassets */; };
 		5160BE402AF24D7800093756 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5160BE3E2AF24D7800093756 /* LaunchScreen.storyboard */; };
@@ -40,9 +41,10 @@
 /* Begin PBXFileReference section */
 		11764AD76BFFB6E4FA48CF6A /* Pods-TestTask.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestTask.release.xcconfig"; path = "Target Support Files/Pods-TestTask/Pods-TestTask.release.xcconfig"; sourceTree = "<group>"; };
 		33849B870A8AC519A8927273 /* Pods_TestTask.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestTask.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512F1AF12B068F360094E475 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		512F1AF32B068F450094E475 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		5160BE302AF24D7600093756 /* TestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5160BE332AF24D7600093756 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5160BE352AF24D7600093756 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5160BE372AF24D7600093756 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5160BE3C2AF24D7800093756 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5160BE3F2AF24D7800093756 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -93,6 +95,23 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		512F1AEF2B068F1D0094E475 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				512F1AF02B068F270094E475 /* Protocols */,
+				512F1AF12B068F360094E475 /* AppCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		512F1AF02B068F270094E475 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				512F1AF32B068F450094E475 /* Coordinator.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		5160BE272AF24D7600093756 = {
 			isa = PBXGroup;
 			children = (
@@ -115,8 +134,8 @@
 		5160BE322AF24D7600093756 /* TestTask */ = {
 			isa = PBXGroup;
 			children = (
+				512F1AEF2B068F1D0094E475 /* Coordinators */,
 				5160BE332AF24D7600093756 /* AppDelegate.swift */,
-				5160BE352AF24D7600093756 /* SceneDelegate.swift */,
 				5160BE3E2AF24D7800093756 /* LaunchScreen.storyboard */,
 				5160BE6C2AF39EAF00093756 /* Library */,
 				5160BE682AF39E6700093756 /* Login&Auth */,
@@ -385,16 +404,17 @@
 				5160BE582AF2C68900093756 /* BookInfoCell.swift in Sources */,
 				5160BE712AF3B96600093756 /* SignUpViewController.swift in Sources */,
 				51D7E8612AF5236200E8E3BC /* LoginViewModel.swift in Sources */,
+				512F1AF22B068F360094E475 /* AppCoordinator.swift in Sources */,
 				5160BE522AF2A0FF00093756 /* OneLineTextField.swift in Sources */,
 				5160BE5C2AF2D2FA00093756 /* BookModel.swift in Sources */,
 				5160BE672AF2EF1D00093756 /* KeyChainManager.swift in Sources */,
 				5160BE482AF2528F00093756 /* UIButtonWithExtension.swift in Sources */,
 				5160BE342AF24D7600093756 /* AppDelegate.swift in Sources */,
-				5160BE362AF24D7600093756 /* SceneDelegate.swift in Sources */,
 				51D7E8652AF532E400E8E3BC /* Credentials.swift in Sources */,
 				5160BE562AF2BCA800093756 /* ListOfBooksViewController.swift in Sources */,
 				5160BE612AF2E33700093756 /* Validators.swift in Sources */,
 				51D7E85E2AF5234100E8E3BC /* Dynamic.swift in Sources */,
+				512F1AF42B068F450094E475 /* Coordinator.swift in Sources */,
 				51D7E8632AF5237000E8E3BC /* AuthViewModel.swift in Sources */,
 				5160BE632AF2EBF200093756 /* AuthService.swift in Sources */,
 			);

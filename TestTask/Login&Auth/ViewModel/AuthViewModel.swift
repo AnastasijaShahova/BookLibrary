@@ -8,7 +8,8 @@
 import Foundation
 
 class AuthViewModel {
-
+    weak var coordinator : AppCoordinator?
+    
     private var credentials = Credentials() {
         didSet {
             username = credentials.username
@@ -39,5 +40,13 @@ class AuthViewModel {
                 completion("unsuccess")
             }
         }
+    }
+    
+    func goToLoginPage() {
+        coordinator?.goToLoginPage()
+    }
+    
+    func goToMainPage() {
+        coordinator?.goToMainPage()
     }
 }

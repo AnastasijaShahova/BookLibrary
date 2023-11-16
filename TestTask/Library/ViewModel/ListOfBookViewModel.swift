@@ -10,6 +10,7 @@ import Foundation
 class ListOfBookViewModel {
 
     private var library: [Book]?
+    weak var coordinator : AppCoordinator?
 
     func fetchLibrary(completion: @escaping() -> ()) {
         NetworkManager.fetchData { [weak self] library, error in
@@ -26,5 +27,9 @@ class ListOfBookViewModel {
     func cellViewModelForIndexPath(indexPath: IndexPath) -> BookInfoCellViewModel? {
         guard let book = library?[indexPath.row] else { return nil }
         return BookInfoCellViewModel(bookInfo: book)
+    }
+    
+    func goToLogin() {
+        coordinator?.goToLoginPage()
     }
 }

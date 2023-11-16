@@ -8,6 +8,7 @@
 import Foundation
 
 class LoginViewModel {
+    weak var coordinator : AppCoordinator?
     
     private var credentials = Credentials() {
         didSet {
@@ -39,5 +40,13 @@ class LoginViewModel {
                 completion("unsuccess")
             }
         }
+    }
+    
+    func goToRegister() {
+        coordinator?.goToRegisterPage()
+    }
+    
+    func goToMainPage() {
+        coordinator?.goToMainPage()
     }
 }

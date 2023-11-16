@@ -9,7 +9,7 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     
-    private var viewModel: LoginViewModel?
+    var viewModel: LoginViewModel?
     
     let welcomeBackLabel = UILabel(text: "Welcome!", font: .avenir26())
     let emailLabel = UILabel(text: "Email")
@@ -32,8 +32,6 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        viewModel = LoginViewModel()
-        
         setupConstraints()
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -48,7 +46,7 @@ final class LoginViewController: UIViewController {
         
         let isAuthenticated = UserDefaults.standard.bool(forKey: "isAuthenticated")
         if isAuthenticated {
-            navigationController?.pushViewController(ListOfBooksViewController(), animated: true)
+            viewModel?.goToMainPage()
         }
         cleanTextField()
     }
@@ -61,10 +59,9 @@ final class LoginViewController: UIViewController {
     @objc private func loginButtonTapped() {
         viewModel?.updateCredentials(username: emailTextField.text!, password: passwordTextField.text!)
         
-        viewModel?.login(completion: { value in
+        viewModel?.login(completion: { [weak self] (value) in
             if value == "success" {
-                let libraryViewController = ListOfBooksViewController()
-                self.navigationController?.pushViewController(libraryViewController, animated: true)
+                self?.viewModel?.goToMainPage()
             }
         })
     }
@@ -77,8 +74,7 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func signUpButtonTapped() {
-        let signUpVC = SignUpViewController()
-        self.navigationController?.pushViewController(signUpVC, animated: true)
+        self.viewModel?.goToRegister()
     }
 }
 

@@ -7,8 +7,10 @@
 
 import Foundation
 
-class AuthService {
+final class AuthService {
     static let shared = AuthService()
+    
+    private init() {}
     
     func login(email: String?, password: String?, completion: @escaping (Result<String, Error>) -> Void) {
         
@@ -16,6 +18,7 @@ class AuthService {
             completion(.failure(AuthError.unknownError))
             return
         }
+        
         guard Validators.isFilled(email: email, password: password) else {
             completion(.failure(AuthError.notFilled))
             return

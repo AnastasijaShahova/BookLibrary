@@ -8,11 +8,11 @@
 import Foundation
 import UIKit
 
-class ListOfBooksViewController: UIViewController {
+final class ListOfBooksViewController: UIViewController {
 
     var tableView: UITableView!
     private var viewModel: ListOfBookViewModel?
-    private var activityIndicator = UIActivityIndicatorView(style: .large)
+    private var activityIndicator = UIActivityIndicatorView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,21 +46,16 @@ class ListOfBooksViewController: UIViewController {
     }
     
     private func setupActivityIndicator() {
+        activityIndicator.style = .large
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         tableView.addSubview(activityIndicator)
-        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-    }
-
-    
-    private func loadLibraryData() {
-        activityIndicator.startAnimating()
-        viewModel?.fetchLibrary { [weak self] in
-            self?.activityIndicator.stopAnimating()
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
-        }
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
     }
     
     @objc private func logoutButtonTapped() {
@@ -70,6 +65,22 @@ class ListOfBooksViewController: UIViewController {
     }
 }
 
+
+//MARK: - LoadData
+extension ListOfBooksViewController {
+    private func loadLibraryData() {
+        activityIndicator.startAnimating()
+        viewModel?.fetchLibrary { [weak self] in
+            self?.activityIndicator.stopAnimating()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
+}
+
+
+//MARK: - UITableViewDelegate, UITableViewDataSource
 extension ListOfBooksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel?.numberOfRowsInSection() ?? 0

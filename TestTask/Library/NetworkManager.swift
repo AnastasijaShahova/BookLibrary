@@ -8,7 +8,8 @@
 import Foundation
 import Moya
 
-class NetworkManager {
+final class NetworkManager {
+    
     static func fetchData(completion: @escaping ([Book]?, MoyaError?) -> Void) {
         let provider = MoyaProvider<BookService>()
 

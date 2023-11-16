@@ -38,6 +38,5 @@ class Validators {
     static func rightPassword(writePassword: String, readPassword: String) -> Bool {
         return readPassword == writePassword ? true : false
     }
-    
 }
 
